@@ -17,13 +17,13 @@ public class Producer implements Runnable {
             while (true) {
 
                 synchronized (buffer) {
-                    System.out.println("Producer: buffer size is " + buffer.getSize());
-                    if (buffer.isFull()) {
-                        System.out.println("Producer: buffer is full. Waiting...");
+                    System.out.println("basicRealization.Producer: buffer size is " + buffer.getSize());
+                    while (buffer.isFull()) {
+                        System.out.println("basicRealization.Producer: buffer is full. Waiting...");
                         buffer.wait();
-                        System.out.println("Producer: stop waiting");
+                        System.out.println("basicRealization.Producer: stop waiting");
                     }
-                    System.out.println("Producer: adding element " + counter + "...");
+                    System.out.println("basicRealization.Producer: adding element " + counter + "...");
                     buffer.add(counter);
 
                     buffer.notify();

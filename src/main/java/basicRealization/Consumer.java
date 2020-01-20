@@ -1,3 +1,5 @@
+package basicRealization;
+
 import java.util.Random;
 
 public class Consumer implements Runnable {
@@ -15,13 +17,12 @@ public class Consumer implements Runnable {
 
                 firstElement = buffer.getFirstElement();
 
-                System.out.println("Consumer: Extracting element successful - " + firstElement);
+                System.out.println("basicRealization.Consumer: Extracting element successful - " + firstElement);
                 Thread.sleep(new Random().nextInt(3000));
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
     }
 }

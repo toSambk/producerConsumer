@@ -1,9 +1,12 @@
+package basicRealization;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Buffer {
 
     private final Object mutex = new Object();
+
     private List<Integer> buffer = new ArrayList<Integer>();
     private int maxSize;
 
@@ -24,16 +27,16 @@ public class Buffer {
 
         synchronized (mutex) {
 
-            System.out.println("Buffer size = " + buffer.size());
+            System.out.println("basicRealization.Buffer size = " + buffer.size());
 
-            if (isFull()) {
-                System.out.println("Buffer is full. Current size - " + buffer.size());
+            while (isFull()) {
+                System.out.println("basicRealization.Buffer is full. Current size - " + buffer.size());
                 mutex.wait();
                 System.out.println("Waiting by producer is finished");
             }
 
             buffer.add(element);
-            mutex.notifyAll();
+            mutex.notify();
 
         }
 
@@ -44,17 +47,17 @@ public class Buffer {
         int result;
         synchronized (mutex) {
 
-            System.out.println("Buffer  size = " + buffer.size());
+            System.out.println("basicRealization.Buffer  size = " + buffer.size());
 
-            if (isEmpty()) {
-                System.out.println("Buffer is empty. Current size - " + buffer.size());
+            while (isEmpty()) {
+                System.out.println("basicRealization.Buffer is empty. Current size - " + buffer.size());
                 mutex.wait();
                 System.out.println("Waiting by consumer is finished");
             }
 
             result = buffer.get(0);
             buffer.remove(0);
-            mutex.notifyAll();
+            mutex.notify();
 
         }
 

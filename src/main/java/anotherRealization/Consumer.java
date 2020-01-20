@@ -17,15 +17,15 @@ public class Consumer implements Runnable {
 
                 synchronized (buffer) {
 
-                    System.out.println("Consumer: current buffer size is " + buffer.getSize());
+                    System.out.println("basicRealization.Consumer: current buffer size is " + buffer.getSize());
 
-                    if (buffer.isEmpty()) {
-                        System.out.println("Consumer: buffer is empty. Waiting...");
+                    while (buffer.isEmpty()) {
+                        System.out.println("basicRealization.Consumer: buffer is empty. Waiting...");
                         buffer.wait();
-                        System.out.println("Consumer: stop waiting.");
+                        System.out.println("basicRealization.Consumer: stop waiting.");
                     }
 
-                    System.out.println("Consumer: getting element " + buffer.getFirstElement());
+                    System.out.println("basicRealization.Consumer: getting element " + buffer.getFirstElement());
 
                     buffer.notify();
 
