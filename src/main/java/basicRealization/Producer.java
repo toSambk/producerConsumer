@@ -1,3 +1,5 @@
+package basicRealization;
+
 import java.util.Random;
 
 public class Producer implements Runnable {
@@ -12,15 +14,14 @@ public class Producer implements Runnable {
         int i = 0;
         try {
             while (true) {
-                System.out.println("Producer: adding element " + i + "...");
+                System.out.println("basicRealization.Producer: adding element " + i + "...");
                 buffer.addElement(i);
                 i++;
-                Thread.sleep(new Random().nextInt(3000));
+                Thread.sleep(new Random().nextInt(1000));
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
     }
 }

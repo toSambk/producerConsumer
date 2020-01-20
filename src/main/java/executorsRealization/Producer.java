@@ -1,4 +1,4 @@
-package anotherRealization;
+package executorsRealization;
 
 import java.util.Random;
 
