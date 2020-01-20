@@ -15,7 +15,7 @@ public class Consumer implements Runnable {
             while (true) {
                 int firstElement = 0;
 
-                firstElement = buffer.getFirstElement();
+                firstElement = (int) buffer.getFirstElement();
 
                 System.out.println("basicRealization.Consumer: Extracting element successful - " + firstElement);
                 Thread.sleep(new Random().nextInt(3000));

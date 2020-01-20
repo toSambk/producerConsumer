@@ -3,11 +3,11 @@ package basicRealization;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Buffer {
+public class Buffer<T> {
 
     private final Object mutex = new Object();
 
-    private List<Integer> buffer = new ArrayList<Integer>();
+    private List<T> buffer = new ArrayList<>();
     private int maxSize;
 
     public Buffer(int size) {
@@ -23,7 +23,7 @@ public class Buffer {
     }
 
 
-    public void addElement(int element) throws InterruptedException {
+    public void addElement(T element) throws InterruptedException {
 
         synchronized (mutex) {
 
@@ -42,9 +42,9 @@ public class Buffer {
 
     }
 
-    public int getFirstElement() throws InterruptedException {
+    public T getFirstElement() throws InterruptedException {
 
-        int result;
+        T result;
         synchronized (mutex) {
 
             System.out.println("basicRealization.Buffer  size = " + buffer.size());
